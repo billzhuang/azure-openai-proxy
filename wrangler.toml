@@ -1,0 +1,14 @@
+name = "azure-openai-proxy"
+account_id = ""
+usage_model = "bundled"
+workers_dev = true
+compatibility_date = "2023-03-08"
+main = "src/index.ts"
+routes = [
+	{ pattern = "xyz.xzy.com", custom_domain = true },
+]
+
+[vars]
+AZURE_OPENAI_MODEL_MAPPER = "gpt-3.5-turbo=gpt-35-turbo,gpt-4=gpt-4,gpt-4-32k=gpt-4-32k"
+AZURE_OPENAI_ENDPOINT = "xyz.openai.azure.com"
+AZURE_OPENAI_APIVERSION = "2023-03-15-preview"
