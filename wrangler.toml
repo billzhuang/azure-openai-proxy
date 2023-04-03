@@ -1,0 +1,9 @@
+name = "azure-openai-proxy"
+account_id = ""
+usage_model = "bundled"
+workers_dev = true
+compatibility_date = "2023-03-08"
+main = "src/index.ts"
+routes = [
+	{ pattern = "azure.b2zh.com", custom_domain = true },
+]
