@@ -14,21 +14,25 @@ const handleRequest = async (
   const AzureOpenAIModelMapper: { [key: string]: string } = {};
 
   // Don't know how to do this in a better way
-  const jsonPayload = (await request.clone().json()) as { [key: string]: any};
+  let jsonPayload = {} as { [key: string]: any };
+  try {
+    jsonPayload = (await request.clone().json()) as { [key: string]: any };
+  }
+  catch (e) {
+  }
 
   if (AZURE_OPENAI_MODEL_MAPPER) {
-      const pairs = AZURE_OPENAI_MODEL_MAPPER.split(',');
+    const pairs = AZURE_OPENAI_MODEL_MAPPER.split(',');
 
-      for (const pair of pairs) {
-          const info = pair.split('=');
+    for (const pair of pairs) {
+      const info = pair.split('=');
 
-          if (info.length !== 2) {
-              console.error(`error parsing AZURE_OPENAI_MODEL_MAPPER, invalid value ${pair}`);
-              //process.exit(1);
-          }
-
-          AzureOpenAIModelMapper[info[0]] = info[1];
+      if (info.length !== 2) {
+        console.error(`error parsing AZURE_OPENAI_MODEL_MAPPER, invalid value ${pair}`);
       }
+
+      AzureOpenAIModelMapper[info[0]] = info[1];
+    }
   }
 
   reflare.push({
