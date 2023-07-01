@@ -18,7 +18,7 @@
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.54.1",
     "clean-webpack-plugin": "^4.0.0",
-    "eslint": "^8.35.0",
+    "eslint": "^8.44.0",
     "miniflare": "^2.12.1",
     "ts-loader": "^9.4.2",
     "ts-node": "^10.9.1",
